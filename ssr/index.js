@@ -1,3 +1,3 @@
-import Logger from '../log';
+import Logger from './src/log';
 
 Logger.info('ssr');

@@ -3,6 +3,7 @@
   "version": "2.0.0",
   "description": "my personal blog",
   "main": "index.js",
+  "type": "module",
   "author": "johlem93",
   "license": "MIT",
   "devDependencies": {

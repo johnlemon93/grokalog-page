@@ -4,5 +4,8 @@
   "description": "my personal blog",
   "main": "index.js",
   "author": "johlem93",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.7.0"
+  }
 }

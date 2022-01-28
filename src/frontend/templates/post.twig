@@ -1,0 +1,19 @@
+{% extends "_layout.twig" %}
+
+{% block title %}
+	{{ title ~ " | Chanh's blog" }}
+{% endblock %}
+
+{% block header %}
+	<header class="header2">
+		<a class="head" href="/">
+			<span class="avatar"></span>
+			<span class="header-link">Chanh's Blog</span>
+		</a>
+		<a class="subscribe" href="/" rel="noopener noreferrer" target="blank">Follow me</a>
+	</header>
+{% endblock %}
+
+{% block body %}
+  {{ content }}
+{% endblock %}

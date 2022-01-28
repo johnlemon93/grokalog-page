@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&amp;subset=latin-ext,vietnamese">
+  <!-- <link href="/emoji/css/messenger.min.css" rel="stylesheet"> -->
+  <meta name="google-site-verification" content="pETm_1ofxmKp-snT-jxtmVt2uUhH3F13ZofnfafrW9w" />
+
+  <title>{% block title %}Nơi tôi tập tành viết lách | blog Chanh Dây{% endblock %}</title>
+  <link rel="stylesheet" href="index.css" type="text/css" />
+  <script defer src="index.js"></script>
+</head>
+
+<body>
+  <div itemScope itemType="https://schema.org/Blog" id="root">
+
+    {% block header %}
+    <header>
+      <a href="/"><img src="/assets/images/logo.png" alt="animal" /></a>
+      <h1 itemProp="name">BLOG CHANH DÂY</h1>
+      <h4 itemProp="author">by John Lemon</h4>
+
+      <p class="me-intro" itemProp="description">
+        Nơi tôi thỏa sức tập tành viết lách,<br />
+        than thở chuyện đời và...<br />
+        nói xấu người khác
+      </p>
+
+      <nav>
+        <a aria-current="false" target="_blank" rel="noopener noreferrer" href="/follow-me/">Follow Me</a>
+        <a aria-current="false" href="/my-oln/">My Original Light Novel</a>
+        <a aria-current="false" href="/book-corner/">Book corner</a>
+        <a aria-current="false" href="/about-me/">About me</a>
+      </nav>
+
+      <div class="search">
+        <form action="https://www.google.com/search" method="get">
+          <input type="text" name="q" placeholder="Tìm cái giề?" />
+          <input type="hidden" name="as_sitesearch" value="blogchanhday.com" />
+        </form>
+      </div>
+    </header>
+    {% endblock %}
+
+    <main id="container">
+      {% block body %}{% endblock %}
+    </main>
+
+    {% block footer %}
+    <footer>
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
+        <img alt="Creative Commons License" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" />
+      </a>
+      <p>Created with <a href="https://github.com/johnlemon93/blog-page-ssr">Blog Page SSR</a></p>
+      <div class="social">
+        <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/blogchanhday"><i class="icon-facebook-squared"></i></a>
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/johnlemon93"><i class="icon-github-squared"></i></a>
+        <a target="_blank" rel="noopener noreferrer" href="https://blogchanhday.com"><i class="icon-emo-coffee"></i></a>
+      </div>
+    </footer>
+    {% endblock %}
+
+  </div>
+</body>
+
+</html>

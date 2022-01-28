@@ -73,3 +73,4 @@ strong, b, h1, h2, h3, h4, h5, h6 {
 }
 
 @import 'templates/_layout.css';
+@import 'assets/styles/fontello.css';

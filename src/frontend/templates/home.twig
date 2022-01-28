@@ -11,26 +11,24 @@
       2017: "dau"
     } %}
 
-		{% for year in years %}
-			<section id="{{ year }}" class="year">
+		{% for list in postLists %}
+			<section id="{{ list.year }}" class="year">
 				<div class="header">
 					<i class="button icon-down-open"></i>
-					<span class="line"></span><img alt="animal" src="/assets/images/{{ zodiacIconMap[year] }}.png"/>
+					<span class="line"></span><img alt="animal" src="/assets/images/{{ zodiacIconMap[list.year] }}.png"/>
 				</div>
 
 				<div class="entries">
-					{% for post in posts %}
-						{% if year in post.date %}
-							<div class="entry" itemscope="" itemprop="blogPost" itemtype="https://schema.org/BlogPosting">
-								<a aria-current="false" title="Go to post detail" itemprop="url" href="{{ post.url }}">
-									<h4 class="entry-title" itemprop="name">{{ post.title }}</h4>
-									<time class="entry-date" itemprop="datePublished" datetime="2018-10-28">Published
-										<!-- -->
-										{{ post.date | date('F j, Y') }}
-									</time>
-								</a>
-							</div>
-						{% endif %}
+					{% for post in list.posts %}
+						<div class="entry" itemscope="" itemprop="blogPost" itemtype="https://schema.org/BlogPosting">
+							<a aria-current="false" title="Go to post detail" itemprop="url" href="{{ post.url }}">
+								<h4 class="entry-title" itemprop="name">{{ post.title }}</h4>
+								<time class="entry-date" itemprop="datePublished" datetime="2018-10-28">Published
+									<!-- -->
+									{{ post.date | date('F j, Y') }}
+								</time>
+							</a>
+						</div>
 					{% endfor %}
 				</div>
 

@@ -1,5 +1,24 @@
 {% extends "_layout.twig" %}
 
 {% block body %}
-	Hello
+	<article class="post-list">
+		{% for year in years %}
+			<section id="{{ year }}" class="year">
+				<div class="header">
+					<i class="button icon-down-open"></i>
+					<span class="line"></span><img alt="animal" src="images/tuat.png"/></div>
+				<div class="entries">
+					<div class="entry" itemscope="" itemprop="blogPost" itemtype="https://schema.org/BlogPosting">
+						<a aria-current="false" title="Go to post detail" itemprop="url" href="/p/funny-issue-voi-stringify-va-mongoose-object/">
+							<h4 class="entry-title" itemprop="name">Funny issue với JSON.stringify và Mongoose object</h4>
+							<time class="entry-date" itemprop="datePublished" datetime="2018-10-28">Published
+								<!-- -->
+								Sun, Oct 28, 2018
+							</time>
+						</a>
+					</div>
+				</div>
+			</section>
+		{% endfor %}
+	</article>
 {% endblock %}

@@ -1,6 +1,7 @@
 import express from 'express';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
+import publishData from './publish.json';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
@@ -13,7 +14,7 @@ app.set('view engine', 'twig');
 app.set('view options', { layout: false });
 
 app.get('/', (_req, res) => {
-  res.render('home');
+  res.render('home', publishData);
 });
 
 app.get('/p', (_req, res) => {

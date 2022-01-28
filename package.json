@@ -8,5 +8,10 @@
   "license": "MIT",
   "devDependencies": {
     "eslint": "^8.7.0"
+  },
+  "dependencies": {
+    "highlight.js": "^11.4.0",
+    "marked": "^4.0.12",
+    "twig": "^1.15.4"
   }
 }

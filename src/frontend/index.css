@@ -1,3 +1,8 @@
+@import 'templates/_layout.css';
+@import 'templates/home.css';
+@import 'templates/post.css';
+@import 'assets/styles/fontello.css';
+
 * {
     font-family: inconsolata, monospace;
     font-size: 16px;
@@ -71,6 +76,3 @@ h1, h2, h3, h4, h5, h6 {
 strong, b, h1, h2, h3, h4, h5, h6 {
     font-weight: bold;
 }
-
-@import 'templates/_layout.css';
-@import 'assets/styles/fontello.css';

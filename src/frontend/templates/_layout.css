@@ -1,3 +1,4 @@
+/* #region header */
 header {
   margin-bottom: 25px;
 }
@@ -93,3 +94,85 @@ nav a:hover, .header2 .subscribe:hover {
   text-transform: uppercase;
   margin: 0;
 }
+/* #endregion */
+
+/* #region body */
+main {
+  display: flex;
+  justify-content: center;
+  min-height: 220px;
+  padding: 0 20px 0 20px;
+}
+
+main p {
+  line-height: 150%;
+}
+
+main img, main .center {
+  display: block;
+  margin: auto;
+  max-width: 100%;
+  border-radius: 3px;
+}
+
+aside {
+  width: 25%;
+}
+
+article {
+  max-width: 800px;
+  flex-grow: 1;
+}
+
+.loading {
+  padding: 30px;
+  background: url('/images/loading.gif') no-repeat center center;
+  display: block
+}
+
+::-webkit-scrollbar-track {
+  background-color: #eee
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: #ccc
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border: 0
+}
+/* #endregion */
+
+/* #region footer */
+footer {
+  background: #fafafa;
+  text-align: center;
+  padding: 10px;
+}
+
+footer {
+  margin-top: 25px;
+  padding: 30px;
+}
+
+footer a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #4a9c54;
+}
+
+footer .social a {
+  margin-left: 10px;
+}
+
+footer .social a:nth-child(1) {
+  margin-left: 0;
+}
+
+footer a:hover {
+  text-decoration: underline;
+  color: green;
+}
+/* #endregion */

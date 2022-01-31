@@ -14,12 +14,11 @@ app.set('view engine', 'twig');
 app.set('view options', { layout: false });
 
 app.get('/', (_req, res) => {
-  const postLists = publishData.years.map(year => {
-    ({
-      year: year,
-      posts: publishData.posts.filter(post => post.date.includes(year))
-    });
-  });
+  const postLists = publishData.years.map(year => ({
+    year,
+    posts: publishData.posts.filter(post => post.date.includes(year))
+  }));
+
   res.render('home', { postLists });
 });
 

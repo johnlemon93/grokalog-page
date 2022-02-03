@@ -27,7 +27,7 @@ app.get('/', (_req, res) => {
   res.render('home', { postLists });
 });
 
-app.get('/about-me', (_req, res) => {
+app.get(['/about-me', '/book-corner', '/follow-me'], (_req, res) => {
   res.render('about');
 });
 

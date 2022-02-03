@@ -27,6 +27,10 @@ app.get('/', (_req, res) => {
   res.render('home', { postLists });
 });
 
+app.get('/about-me', (_req, res) => {
+  res.render('about');
+});
+
 app.get('/p/:slug', async (req, res) => {
   const postSlug = req.params.slug;
   const post = publishData.posts.find(p => p.url.includes(postSlug));

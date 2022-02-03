@@ -171,8 +171,9 @@ pre code, pre code * {
 #go-top i {
   font-size: 20px;
   position: fixed;
-  bottom: 36px;
-  right: 41px;
+  bottom: 25px;
+  right: 38px;
+  color: white !important;
 }
 
 #go-top:hover {

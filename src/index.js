@@ -1,7 +1,7 @@
 import express from 'express';
 import fs from 'fs';
 import { promisify } from 'util';
-import { dirname } from 'path';
+import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import publishData from './publish.json';
 import md2Html from './md2html';
@@ -39,6 +39,14 @@ app.get('/p/:slug', async (req, res) => {
     content: postContent,
     likeboxSource: encodeURIComponent(`https://${blogDomain}/p/${postSlug}/index.html`),
   });
+});
+
+app.get('/p/:slug/img/:image', (req, res) => {
+  res.sendFile(`${__dirname}/posts/${req.params.slug}/img/${req.params.image}`);
+});
+
+app.get('*/node_modules/*', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', req.url));
 });
 
 const port = process.env.PORT || 9999;

@@ -126,7 +126,7 @@ article {
 
 .loading {
   padding: 30px;
-  background: url('/images/loading.gif') no-repeat center center;
+  background: url('/assets/images/loading.gif') no-repeat center center;
   display: block
 }
 

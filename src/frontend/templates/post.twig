@@ -15,35 +15,29 @@
 {% endblock %}
 
 {% block body %}
-	<article itemscope itemtype="https://schema.org/BlogPosting" classname="post-container">
-		<section classname="content">{{ content }}</section>
+	<article itemscope itemtype="https://schema.org/BlogPosting" class="post-container">
+		<section class="content">{{ content }}</section>
 
-		<section className="copyright">
+		<section class="copyright">
 			Có lòng thì cho mình xin ít like rồi thích share hay post lại gì cũng được.
-			<strong> Cơ mà</strong> phải <strong>ghi rõ nguồn, tác giả và không làm thay đổi nội dung bài viết</strong>. 
-			"Ứ làm theo đấy rồi sao!". Ờ thì cũng được thôi, sau này trên đường đời tấp nập, nhỡ có va vào nhau thì cho mình nện cục gạch!!!
-			<i id="brick" /> Chào thân ái và quyết thắng!
+			<strong>
+				Cơ mà</strong>
+			phải
+			<strong>ghi rõ nguồn, tác giả và không làm thay đổi nội dung bài viết</strong>. 
+							"Ứ làm theo đấy rồi sao!". Ờ thì cũng được thôi, sau này trên đường đời tấp nập, nhỡ có va vào nhau thì cho mình nện cục gạch!!!
+			<i id="brick"></i>
+			Chào thân ái và quyết thắng!
 		</section>
-		
+
 		<section class="likebox">
-      {% set source = "https://www.facebook.com/plugins/like.php?href=" ~ likeboxSource ~ "&layout=standard&action=like&size=small&show_faces=true&share=true&colorscheme=light&appId=1451967558408105" %}
-			<iframe class="fb-like"
-				src="{{ source }}"
-				title="Facebook like box"
-				height="56"
-				width="450"
-				style="border:none;overflow:hidden"
-				scrolling="no"
-				frameborder="0"
-				allowtransparency="true"
-				allow="encrypted-media">
-			</iframe>
+			{% set source = "https://www.facebook.com/plugins/like.php?href=" ~ likeboxSource ~ "&layout=standard&action=like&size=small&show_faces=true&share=true&colorscheme=light&appId=1451967558408105" %}
+			<iframe class="fb-like" src="{{ source }}" title="Facebook like box" height="56" width="450" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
 		</section>
 
 		<section class="comments"></section>
 
 		<button onclick="" id="go-top" title="Go to top">
-			<i classname="icon-up-open"></i>
+			<i class="icon-up-open"></i>
 		</button>
 	</article>
 {% endblock %}

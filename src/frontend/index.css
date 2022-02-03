@@ -2,7 +2,7 @@
 @import 'templates/home.css';
 @import 'templates/post.css';
 @import 'assets/styles/fontello.css';
-@import '/node_modules/highlight.js/styles/atom-one-dark.css';
+@import '/node_modules/highlight.js/styles/stackoverflow-light.css';
 
 * {
     font-family: inconsolata, monospace;

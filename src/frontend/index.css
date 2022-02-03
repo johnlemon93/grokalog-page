@@ -2,6 +2,7 @@
 @import 'templates/home.css';
 @import 'templates/post.css';
 @import 'assets/styles/fontello.css';
+@import '../../node_modules/highlight.js/styles/tomorrow-night-bright.css';
 
 * {
     font-family: inconsolata, monospace;

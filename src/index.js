@@ -33,7 +33,7 @@ app.get('/p/:slug', async (req, res) => {
 
   const mdData = await fsReadFile(`${__dirname}/posts/${postSlug}/index.md`);
   const postContent = md2Html(mdData);
-
+  
   res.render('post', {
     title: post.title,
     content: postContent,

@@ -26,7 +26,7 @@
 		</section>
 		
 		<section class="likebox">
-      {% set source = "https://www.facebook.com/plugins/like.php?href={{ likeboxSource }}&layout=standard&action=like&size=small&show_faces=true&share=true&colorscheme=light&appId=1451967558408105" %}
+      {% set source = "https://www.facebook.com/plugins/like.php?href=" ~ likeboxSource ~ "&layout=standard&action=like&size=small&show_faces=true&share=true&colorscheme=light&appId=1451967558408105" %}
 			<iframe class="fb-like"
 				src="{{ source }}"
 				title="Facebook like box"

@@ -1,6 +1,7 @@
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -26,6 +27,12 @@ export default {
           },
         ],
       },
+    ],
+  },
+  optimization: {
+    minimizer: [
+      '...',
+      new CssMinimizerPlugin(),
     ],
   },
 };

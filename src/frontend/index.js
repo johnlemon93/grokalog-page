@@ -14,7 +14,6 @@ const initGA = () => {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-  console.log(window.location.hostname);
   if (window.location.hostname !== 'localhost') {
     initGA();
   }

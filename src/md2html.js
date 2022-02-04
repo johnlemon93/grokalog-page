@@ -1,4 +1,5 @@
 import { marked } from 'marked';
+import hljs from 'highlight.js';
 
 marked.setOptions({
   renderer: new marked.Renderer(),
@@ -12,8 +13,12 @@ marked.setOptions({
   smartypants: false,
 });
 
+hljs.configure({
+  cssSelector: 'pre code',
+});
+
 export default function md2Html(mdData) {
-  var markdownPost = mdData.toString('utf8');
+  let markdownPost = mdData.toString('utf8');
   // var lines = markdownPost.split('\n');
   // var title = '';
   // if (lines.length > 0) {
@@ -26,9 +31,11 @@ export default function md2Html(mdData) {
   markdownPost = markdownPost.replace(/<\/math>/g, '$$</pre>');
   //markdownPost = markdownPost.replace(/--@TAGS.*\n/g, generateTags(markdownPost));
 
-  var postContent = marked(markdownPost);
+  let postContent = marked(markdownPost);
   postContent = postContent.replace(/<h1/, '<h1 itemprop="name headline"');
   postContent = postContent.replace(/div class='published'/, 'div class="published" itemprop="datePublished"');
+
+  //postContent = hljs.highlightAuto(postContent).value;
 
   return postContent;
 }

@@ -1,5 +1,6 @@
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -10,11 +11,20 @@ export default {
     filename: 'index.bd.js',
     path: path.resolve(__dirname, 'src/frontend'),
   },
+  plugins: [
+    new MiniCssExtractPlugin({ filename: 'index.bd.css' }),
+  ],
   module: {
     rules: [
       {
         test: /\.css$/,
-        use: 'css-loader',
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: { url: false },
+          },
+        ],
       },
     ],
   },

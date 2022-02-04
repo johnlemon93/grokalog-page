@@ -1,7 +1,4 @@
-import hljs from 'highlight.js';
-
-hljs.highlightAll.called = false;
-hljs.highlightAll();
+import './index.css';
 
 document.querySelectorAll('section.year > div.header').forEach(elem => {
   const cc = 'collapse';

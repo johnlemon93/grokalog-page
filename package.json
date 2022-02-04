@@ -10,6 +10,7 @@
   "devDependencies": {
     "css-loader": "^6.6.0",
     "eslint": "^8.7.0",
+    "mini-css-extract-plugin": "^2.5.3",
     "webpack": "^5.68.0",
     "webpack-cli": "^4.9.2"
   },
@@ -20,6 +21,6 @@
     "twig": "^1.15.4"
   },
   "scripts": {
-    "start": "node --experimental-specifier-resolution=node ."
+    "start": "yarn webpack && node --experimental-specifier-resolution=node ."
   }
 }

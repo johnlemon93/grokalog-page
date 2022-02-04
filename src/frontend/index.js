@@ -1,5 +1,22 @@
 import './index.css';
 
+const GATrackingId = 'UA-119883226-1';
+const initGA = () => {
+  (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments);
+    }, i[r].l = 1 * new Date(); a = s.createElement(o),
+    m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+  window.ga('create', GATrackingId, 'auto');
+  window.ga('send', 'pageview');
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+  initGA();
+});
+
 document.querySelectorAll('section.year > div.header').forEach(elem => {
   const cc = 'collapse';
   elem.addEventListener('click', e => {
@@ -16,7 +33,7 @@ document.querySelectorAll('section.year > div.header').forEach(elem => {
       p.classList.remove(cc);
       return;
     }
-    
+
     p.classList.add(cc);
   });
 });

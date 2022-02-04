@@ -14,7 +14,10 @@ const initGA = () => {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-  initGA();
+  console.log(window.location.hostname);
+  if (window.location.hostname !== 'localhost') {
+    initGA();
+  }
 });
 
 document.querySelectorAll('section.year > div.header').forEach(elem => {

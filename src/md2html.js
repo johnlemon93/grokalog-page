@@ -11,10 +11,10 @@ marked.setOptions({
   // however we do escaping in 'CreatePreview'.
   smartLists: true,
   smartypants: false,
-});
-
-hljs.configure({
-  cssSelector: 'pre code',
+  highlight: (code, lang) => {
+    return hljs.highlight(code, { language: lang }).value;
+  },
+  langPrefix: 'hljs lang-',
 });
 
 export default function md2Html(mdData) {
@@ -34,8 +34,6 @@ export default function md2Html(mdData) {
   let postContent = marked(markdownPost);
   postContent = postContent.replace(/<h1/, '<h1 itemprop="name headline"');
   postContent = postContent.replace(/div class='published'/, 'div class="published" itemprop="datePublished"');
-
-  //postContent = hljs.highlightAuto(postContent).value;
 
   return postContent;
 }

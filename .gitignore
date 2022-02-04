@@ -2,7 +2,9 @@
 /.vscode
 .parcel-cache
 
+# bundles
 dist
+*.bd.*
 
 npm-debug.log*
 yarn-debug.log*

@@ -1,11 +1,7 @@
-const s = document.createElement('script');
-s.setAttribute('src', 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js');
-document.body.appendChild(s);
+import hljs from 'highlight.js';
 
-s.onload = () => {
-  window.hljs.highlightAll.called = false;
-  window.hljs.highlightAll();
-};
+hljs.highlightAll.called = false;
+hljs.highlightAll();
 
 document.querySelectorAll('section.year > div.header').forEach(elem => {
   const cc = 'collapse';

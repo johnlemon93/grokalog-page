@@ -7,8 +7,6 @@ const anonymousAvatar = '/assets/images/elizabeth.jpg';
 const anonymousUsername = 'Khách ghé chơi';
 let currentUser = { displayName: anonymousUsername, photoURL: anonymousAvatar };
 
-const template = html.replaceAll('$avatar', anonymousAvatar);
-
 const postUrl = window.location.href;
 const postSlug = postUrl.split('/')[4];
 const postCommentUrl = `/posts/${postSlug}/comments`;
@@ -26,6 +24,7 @@ const filterURLinComment = comment => {
   return comment.replace(/(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9]\.[^\s]{2,})/g, '<a target=\'_blank\' rel=\'noopener noreferrer\' href=\'$1\'>$1</a>');
 };
 
+const template = html.replaceAll('$avatar', anonymousAvatar);
 document.querySelector('section.comments').innerHTML = template;
 loading(true);
 
@@ -55,18 +54,22 @@ db.getAll(postCommentUrl, 'time',
   },
 );
 
-
-const loginBox = document.getElementById('login-box');
-loginBox.querySelector('button').onclick = () => {
+const cmtBoxElem = document.getElementById('comment-box');
+const loginBoxElem = document.getElementById('login-box');
+loginBoxElem.querySelector('button').onclick = () => {
   auth.loginWithGoogle();
 };
 auth.onAuthStateChanged('loginBox', (authState, user) => {
   currentUser = user ? user : currentUser;
   const display = authState === auth.AuthState.No ? 'block' : 'none';
-  loginBox.style.display = display;
+  loginBoxElem.style.display = display;
+
+  if (user) {
+    cmtBoxElem.querySelector('img').src = user.photoURL;
+  }
 });
 
-const cmtInputElem = document.querySelector('#comment-box textarea');
+const cmtInputElem = cmtBoxElem.querySelector('textarea');
 const cmtInputOnKeyUp = e => {
   if (e.target.scrollHeight <= 50) {
     return;

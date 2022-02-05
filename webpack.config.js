@@ -52,4 +52,5 @@ export default {
       new CssMinimizerPlugin(),
     ],
   },
+  node: false,
 };

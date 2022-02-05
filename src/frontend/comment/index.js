@@ -61,7 +61,6 @@ loginBox.querySelector('button').onclick = () => {
   auth.loginWithGoogle();
 };
 auth.onAuthStateChanged('loginBox', (authState, user) => {
-  console.log(authState, user);
   currentUser = user ? user : currentUser;
   const display = authState === auth.AuthState.No ? 'block' : 'none';
   loginBox.style.display = display;
@@ -82,8 +81,6 @@ const cmtInputOnKeyDown = e => {
   let ctrlCode = e.ctrlKey || e.metaKey;
   const comment = cmtInputElem.value;
 
-  console.log(keyCode, ctrlCode);
-
   if (keyCode !== 13 || !ctrlCode) {
     return;
   }
@@ -98,5 +95,5 @@ const cmtInputOnKeyDown = e => {
   cmtInputElem.value = '';
 };
 
-cmtInputElem.addEventListener('key-up', cmtInputOnKeyUp);
-cmtInputElem.addEventListener('key-down', cmtInputOnKeyDown);
+cmtInputElem.addEventListener('keyup', cmtInputOnKeyUp);
+cmtInputElem.addEventListener('keydown', cmtInputOnKeyDown);

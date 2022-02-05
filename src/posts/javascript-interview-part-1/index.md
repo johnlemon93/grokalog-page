@@ -145,7 +145,7 @@ if (!Array.isArray(array) || !array.length) {
 
 Scope trong JS cũng như các ngôn ngữ khác, có Global và Local scope. Global scope tồn tại cho đến khi ứng dụng bị tắt. Local scope tồn tại cho đến khi function chạy xong. ES6 giới thiệu `let` và `const` mang local scope đến với `block statement`.
 
-```javascript```
+```javascript
 if (true) {
     // this 'if' conditional block doesn't create a scope
 

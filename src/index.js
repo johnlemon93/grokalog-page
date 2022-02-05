@@ -32,15 +32,15 @@ const formatPublishedDate = str => {
   };
 };
 
+publishData.posts = publishData.posts.map(p => {
+  const d = formatPublishedDate(p.date);
+  return { ...p, ...d };
+});
+
 app.get('/', (_req, res) => {
   const postLists = publishData.years.map(year => ({
     year,
-    posts: publishData.posts
-      .filter(post => post.date.includes(year))
-      .map(p => {
-        const d = formatPublishedDate(p.date);
-        return { ...p, ...d };
-      })
+    posts: publishData.posts.filter(post => post.date.includes(year)),
   }));
 
   res.render('home', { postLists });

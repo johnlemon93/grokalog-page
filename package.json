@@ -21,6 +21,7 @@
     "firebase": "^9.6.6",
     "highlight.js": "^11.4.0",
     "marked": "^4.0.12",
+    "moment": "^2.29.1",
     "twig": "^1.15.4"
   },
   "scripts": {

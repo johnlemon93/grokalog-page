@@ -23,9 +23,9 @@
 						<div class="entry" itemscope="" itemprop="blogPost" itemtype="https://schema.org/BlogPosting">
 							<a aria-current="false" title="Go to post detail" itemprop="url" href="{{ post.url }}">
 								<h4 class="entry-title" itemprop="name">{{ post.title }}</h4>
-								<time class="entry-date" itemprop="datePublished" datetime="2018-10-28">Published
+								<time class="entry-date" itemprop="datePublished" datetime="{{ post.dateStr }}">Published
 									<!-- -->
-									{{ post.date | date('F j, Y') }}
+									{{ post.prettyDateStr }}
 								</time>
 							</a>
 						</div>

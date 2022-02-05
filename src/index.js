@@ -3,9 +3,8 @@ import fs from 'fs';
 import { promisify } from 'util';
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
-import moment from 'moment';
 
-import publishData from './publish.json';
+import publishData from './posts';
 import md2Html from './md2html';
 
 const fsReadFile = promisify(fs.readFile);
@@ -19,23 +18,6 @@ app.set('view engine', 'twig');
 // We don't need express to use a parent "page" layout
 // Twig.js has support for this using the {% extends parent %} tag
 app.set('view options', { layout: false });
-
-const formatPublishedDate = str => {
-  const date = moment(str).toDate();
-  const dateStr = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;  
-  const dateStrs = date.toDateString().split(' ');
-  const prettyDateStr = `${dateStrs[0]}, ${dateStrs[1]} ${dateStrs[2]}, ${dateStrs[3]}`;
-
-  return {
-    dateStr,
-    prettyDateStr,
-  };
-};
-
-publishData.posts = publishData.posts.map(p => {
-  const d = formatPublishedDate(p.date);
-  return { ...p, ...d };
-});
 
 app.get('/', (_req, res) => {
   const postLists = publishData.years.map(year => ({

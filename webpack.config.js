@@ -39,7 +39,10 @@ export default {
       {
         test: /\.html$/,
         exclude: /node_modules/,
-        use: 'html-loader',
+        use: {
+          loader: 'html-loader',
+          options: { sources: false },
+        },
       }
     ],
   },

@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "express": "^4.17.2",
+    "firebase": "^9.6.6",
     "highlight.js": "^11.4.0",
     "marked": "^4.0.12",
     "twig": "^1.15.4"

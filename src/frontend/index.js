@@ -1,4 +1,7 @@
 import './index.css';
+import './comment/firebase';
+import './comment/auth';
+import './comment/db';
 
 const GATrackingId = 'UA-119883226-1';
 const initGA = () => {

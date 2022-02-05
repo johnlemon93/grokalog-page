@@ -82,6 +82,8 @@ const cmtInputOnKeyDown = e => {
   let ctrlCode = e.ctrlKey || e.metaKey;
   const comment = cmtInputElem.value;
 
+  console.log(keyCode, ctrlCode);
+
   if (keyCode !== 13 || !ctrlCode) {
     return;
   }

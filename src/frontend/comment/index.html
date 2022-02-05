@@ -1,0 +1,28 @@
+<div id="login-box" class="login" style="display: none">
+  Bạn cần <button>Login</button> để comment
+</div>
+
+<div id="comment-box" class="comment-input" style="display: none">
+  <div class="avatar">
+    <img id="user-avatar" src="$avatar" width="32" height="32" alt="avatar" />
+  </div>
+  <div class="input">
+    <textarea id="comment-content" value="" placeholder="Bạn nghĩ gì về bài viết này?"></textarea>
+    <span>Gõ xong nhấn <kbd>Ctrl</kbd> + <kbd>Enter</kbd> để gửi.</span>
+  </div>
+</div>
+
+<div>
+  <div id="comment-loading" class="loading" style="display: none"></div>
+  <ul id="comment-list" class="comment-list">
+    <li style="display: none">
+      <div class="avatar">
+        <img src="$avatar" width="32" height="32" alt="avatar" />
+      </div>
+      <div class="comment">
+        <div class="metadata"><b>$user</b> lúc <span>$commentTime</span></div>
+        <div class="content">$filteredComment</div>
+      </div>
+    </li>
+  </ul>
+</div>

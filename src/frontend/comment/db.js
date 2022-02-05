@@ -1,7 +1,10 @@
 import { app } from './firebase';
-import { getDatabase, query, ref, onValue, onChildAdded, off, push } from 'firebase/database';
+import { 
+  getDatabase, query, ref, orderByChild, 
+  onValue, onChildAdded, off, push,
+} from 'firebase/database';
 
-const database = { getDatabase, query, ref, onValue, onChildAdded, off, push };
+const database = { getDatabase, query, ref, orderByChild, onValue, onChildAdded, off, push };
 
 let db = database.getDatabase(app);
 
@@ -11,10 +14,10 @@ export default {
       database.ref(db, dataUrl),
       database.orderByChild(orderby),
     );
-  
+
     database.onValue(qr, snapshot => handleLoaded(snapshot));
     database.onChildAdded(qr, snapshot => handleChildAdded(snapshot));
-  
+
     return () => {
       database.off(qr, 'value', handleLoaded);
       database.off(qr, 'child_added', handleChildAdded);

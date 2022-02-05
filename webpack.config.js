@@ -7,13 +7,16 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export default {
   mode: 'production',
-  entry: './src/frontend/index.js',
+  entry: {
+    index: './src/frontend/index.js',
+    comment: './src/frontend/comment/index.js',
+  },
   output: {
-    filename: 'index.bd.js',
+    filename: '[name].bd.js',
     path: path.resolve(__dirname, 'src/frontend'),
   },
   plugins: [
-    new MiniCssExtractPlugin({ filename: 'index.bd.css' }),
+    new MiniCssExtractPlugin({ filename: '[name].bd.css' }),
   ],
   module: {
     rules: [
@@ -33,6 +36,11 @@ export default {
           },
         ],
       },
+      {
+        test: /\.html$/,
+        exclude: /node_modules/,
+        use: 'html-loader',
+      }
     ],
   },
   optimization: {

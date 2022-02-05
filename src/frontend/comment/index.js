@@ -46,9 +46,9 @@ db.getAll(postCommentUrl, 'time',
     const cmtItemElem = cmtItemTpl.cloneNode(true);
     cmtItemElem.style.removeProperty('display');
     cmtItemElem.querySelector('.avatar > img').src = avatar;
-    cmtItemElem.querySelector('.metadata > b').innerText = username;
-    cmtItemElem.querySelector('.metadata > span').innerText = commentTime;
-    cmtItemElem.querySelector('.content').innerText = fileredContent;
+    cmtItemElem.querySelector('.metadata > b').innerHTML = username;
+    cmtItemElem.querySelector('.metadata > span').innerHTML = commentTime;
+    cmtItemElem.querySelector('.content').innerHTML = fileredContent;
 
     cmtListElem.appendChild(cmtItemElem);
   },
@@ -92,7 +92,7 @@ const cmtInputOnKeyDown = e => {
     user: currentUser.displayName,
     avatar: currentUser.photoURL,
     time: (new Date()).getTime(),
-    content: encodeHTML(comment)
+    content: encodeHTML(comment),
   };
   db.create(postCommentUrl, commentData);
   cmtInputElem.value = '';

@@ -2,7 +2,6 @@ import { marked } from 'marked';
 import hljs from 'highlight.js';
 
 marked.setOptions({
-  renderer: new marked.Renderer(),
   gfm: true,
   tables: true,
   breaks: false,
@@ -19,21 +18,29 @@ marked.setOptions({
 
 export default function md2Html(mdData) {
   let markdownPost = mdData.toString('utf8');
-  // var lines = markdownPost.split('\n');
-  // var title = '';
-  // if (lines.length > 0) {
-  //     title = lines[0].replace(/#/g, '').replace("\r\n", '').replace("\n", '');
-  // }
-
   markdownPost = markdownPost.replace(/<cover>/g, '<div class="cover" style="background-image:url(');
   markdownPost = markdownPost.replace(/<\/cover>/g, '"></div><div class="cover-holder"></div>');
   markdownPost = markdownPost.replace(/<math>/g, '<pre class="math">$$');
   markdownPost = markdownPost.replace(/<\/math>/g, '$$</pre>');
-  //markdownPost = markdownPost.replace(/--@TAGS.*\n/g, generateTags(markdownPost));
 
-  let postContent = marked(markdownPost);
+  const renderer = new marked.Renderer();
+  const toc = [];
+  renderer.heading = (text, level, raw, slugger) => {
+    const anchor = slugger.slug(raw);
+    toc.push({
+      anchor: anchor,
+      level: level,
+      text: text
+    });
+    return `<h${level} id="${anchor}">${text}</h${level}>\n`;
+  };
+
+  let postContent = marked(markdownPost, { renderer });
   postContent = postContent.replace(/<h1/, '<h1 itemprop="name headline"');
   postContent = postContent.replace(/div class='published'/, 'div class="published" itemprop="datePublished"');
+  
+  // TODO generate TOC
+  console.log(toc);
 
   return postContent;
 }

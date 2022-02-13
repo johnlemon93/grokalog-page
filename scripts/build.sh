@@ -28,6 +28,6 @@ done
 
 echo "pages rendering..."
 rsync -r --exclude '*.md' --exclude '*.js' src/posts/ $OUT_DIR/p
-node --experimental-specifier-resolution=node  ./scripts/build.js
+node --experimental-specifier-resolution=node ./scripts/build.js
 
 echo $(date +'%Y-%m-%d %H:%M:%S'): "Done building."

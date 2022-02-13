@@ -1,49 +1,27 @@
 import express from 'express';
-import fs from 'fs';
-import { promisify } from 'util';
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
+import renderer from './renderer';
 
-import publishData from './posts';
-import md2Html from './md2html';
-
-const fsReadFile = promisify(fs.readFile);
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const blogDomain = 'blogchanhday.com';
 
 const app = express();
 app.use(express.static(__dirname + '/frontend'));
-app.set('views', __dirname + '/frontend/templates');
-app.set('view engine', 'twig');
-// We don't need express to use a parent "page" layout
-// Twig.js has support for this using the {% extends parent %} tag
-app.set('view options', { layout: false });
 
-app.get('/', (_req, res) => {
-  const postLists = publishData.years.map(year => ({
-    year,
-    posts: publishData.posts.filter(post => post.date.includes(year)),
-  }));
-
-  res.render('home', { postLists });
+app.get('/', async (_req, res) => {
+  const html = await renderer.renderHome();
+  res.send(html);
 });
 
-app.get(['/about-me', '/book-corner', '/follow-me'], (_req, res) => {
-  res.render('about');
+app.get(['/about-me', '/book-corner', '/follow-me'], async (_req, res) => {
+  const html = await renderer.renderAbout();
+  res.send(html);
 });
 
 app.get('/p/:slug', async (req, res) => {
   const postSlug = req.params.slug;
-  const post = publishData.posts.find(p => p.url.includes(postSlug));
-
-  const mdData = await fsReadFile(`${__dirname}/posts/${postSlug}/index.md`);
-  const postContent = md2Html(mdData);
-
-  res.render('post', {
-    title: post.title,
-    content: postContent,
-    likeboxSource: encodeURIComponent(`https://${blogDomain}/p/${postSlug}/index.html`),
-  });
+  const html = await renderer.renderPost(postSlug);
+  res.send(html);
 });
 
 app.get('/p/:slug/img/:image', (req, res) => {

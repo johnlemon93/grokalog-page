@@ -4,12 +4,13 @@ import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import Twig from 'twig';
 
+import config from '../config.json';
 import publishData from './posts';
 import md2Html from './md2html';
 
 const fsReadFile = promisify(fs.readFile);
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const blogDomain = 'blogchanhday.com';
+const blogDomain = config.blogDomain;
 
 const loadTmp = (name = '') => {
   const path = `${__dirname}/frontend/templates/${name}.twig`;

@@ -1,6 +1,7 @@
 import './index.css';
+import config from '../../config.json';
 
-const GATrackingId = 'UA-119883226-1';
+const GATrackingId = config.gaTrackingId;
 const initGA = () => {
   (function (i, s, o, g, r, a, m) {
     i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {

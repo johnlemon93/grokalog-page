@@ -44,3 +44,8 @@ export default function md2Html(mdData) {
 
   return postContent;
 }
+
+// TODO https://web.dev/measure/ : reduce image size
+// TODO to new domain grokalog: font, logo, theme, slogan..., post copyright section
+// TODO generate ToC
+// TODO /comments API

@@ -3,10 +3,7 @@
   "gaTrackingId": "UA-xxxxxxx-1",
   "firebase": {
     "apiKey": "<api-key>",
-    "authDomain": "<project-id>.firebaseapp.com",
-    "databaseURL": "https://<project-id>.firebaseio.com",
-    "projectId": "<project_id>",
-    "storageBucket": "<project_id>.appspot.com",
-    "messagingSenderId": "xxxxxxxxxxxx"
-  }
+    "authDomain": "<project-id>.firebaseapp.com"
+  },
+  "apiBaseUrl": "http://localhost:6868"
 }

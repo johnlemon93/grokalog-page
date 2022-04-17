@@ -1,6 +1,6 @@
 import html from './index.html';
 import './index.css';
-import db from './db';
+import api from './api';
 import auth from './auth';
 
 const anonymousAvatar = '/assets/images/elizabeth.jpg';
@@ -9,7 +9,6 @@ let currentUser = { displayName: anonymousUsername, photoURL: anonymousAvatar };
 
 const postUrl = window.location.href;
 const postSlug = postUrl.split('/')[4];
-const postCommentUrl = `/posts/${postSlug}/comments`;
 
 const loading = (show = true) => {
   const display = show ? 'block' : 'none';
@@ -32,26 +31,27 @@ const cmtListElem = document.getElementById('comment-list');
 const cmtItemTpl = cmtListElem.querySelector('li');
 cmtItemTpl.remove(); // remove the template code
 
-db.getAll(postCommentUrl, 'time',
+const handleCommentAdded = comment => {
+  const avatar = comment.avatar;
+  const author = comment.author;
+  const d = new Date(comment.time);
+  const commentTime = d.toLocaleTimeString() + ' ' + d.toLocaleDateString();
+  let fileredContent = encodeHTML(comment.content);
+  fileredContent = filterURLinComment(fileredContent);
+
+  const cmtItemElem = cmtItemTpl.cloneNode(true);
+  cmtItemElem.style.removeProperty('display');
+  cmtItemElem.querySelector('.avatar > img').src = avatar;
+  cmtItemElem.querySelector('.metadata > b').innerHTML = author;
+  cmtItemElem.querySelector('.metadata > span').innerHTML = commentTime;
+  cmtItemElem.querySelector('.content').innerHTML = fileredContent;
+
+  cmtListElem.appendChild(cmtItemElem);
+};
+api.getAll(
+  postSlug,
   () => loading(false),
-
-  data => {
-    const avatar = data.val().avatar;
-    const username = data.val().user;
-    const d = new Date(data.val().time);
-    const commentTime = d.toLocaleTimeString() + ' ' + d.toLocaleDateString();
-    let fileredContent = encodeHTML(data.val().content);
-    fileredContent = filterURLinComment(fileredContent);
-
-    const cmtItemElem = cmtItemTpl.cloneNode(true);
-    cmtItemElem.style.removeProperty('display');
-    cmtItemElem.querySelector('.avatar > img').src = avatar;
-    cmtItemElem.querySelector('.metadata > b').innerHTML = username;
-    cmtItemElem.querySelector('.metadata > span').innerHTML = commentTime;
-    cmtItemElem.querySelector('.content').innerHTML = fileredContent;
-
-    cmtListElem.appendChild(cmtItemElem);
-  },
+  handleCommentAdded,
 );
 
 const cmtBoxElem = document.getElementById('comment-box');
@@ -89,13 +89,20 @@ const cmtInputOnKeyDown = e => {
   }
 
   let commentData = {
-    user: currentUser.displayName,
+    author: currentUser.displayName,
     avatar: currentUser.photoURL,
     time: (new Date()).getTime(),
     content: encodeHTML(comment),
   };
-  db.create(postCommentUrl, commentData);
-  cmtInputElem.value = '';
+
+  loading(true);// TODO show loading/blurring effect
+  api.create(postSlug, commentData, 
+    () => loading(false), // TODO off loading/blurring effect
+    cmt => {
+      handleCommentAdded(cmt);
+      cmtInputElem.value = '';
+    },
+  );
 };
 
 cmtInputElem.addEventListener('keyup', cmtInputOnKeyUp);
